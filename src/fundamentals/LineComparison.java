@@ -34,10 +34,14 @@ public class LineComparison {
         double length1=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
         double length2=Math.sqrt((a2-a1)*(a2-a1)+(b2-b1)*(b2-b1));
 
-        // Checking equality of two line lengths using equals()
-        if(Double.valueOf(length1).equals(length2))
+        // Checking equality of two line lengths using compareTo()
+        int result=Double.valueOf(length1).compareTo(length2);
+        //Comparison output based on result value
+        if(result==0)
             System.out.println("Both lines are equal in length");
+        else if(result>0)
+            System.out.println("Line 1 is greater than Line 2");
         else
-            System.out.println("Lines are not equal in length");
+            System.out.println("Line 1 is smaller than Line 2");
     }
 }
