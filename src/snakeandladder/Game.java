@@ -17,10 +17,13 @@ public class Game {
         System.out.println("Welcome to Snake and Ladder Game");
         System.out.println("Player starting position:"+player.getPosition());
 
+        int diceCount=0;
+
         //Loop until position=100
         while(player.getPosition()<100) {
             //Roll the dice
             int diceValue = dice.roll();
+            diceCount++;
             System.out.println("Dice Rolled:" + diceValue);
 
             //Generates 0,1,2 corresponding to No Play, Ladder, Snake
@@ -52,5 +55,6 @@ public class Game {
             System.out.println("Player Positon after dice roll:" + player.getPosition());
         }
         System.out.println("Congratulations! Player reached Exact Winning 100");
+        System.out.println("Total Dice Rolls: "+diceCount);
     }
 }
