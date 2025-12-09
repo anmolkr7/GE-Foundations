@@ -36,15 +36,21 @@ public class Game {
                 System.out.println("Snake");
                 currentPosition -= diceValue; //move backwards
             }
-
+            //Reset to 0 if negative
             if(currentPosition<0){
                 System.out.println("Position < 0, so reset to 0");
                 currentPosition=0;
+            }
+
+            //Exact 100 winning rule
+            if(currentPosition>100){
+                System.out.println("Move exceeds 100, stay at same position");
+                currentPosition=player.getPosition(); //ignore move
             }
             //Updating player position
             player.setPosition(currentPosition);
             System.out.println("Player Positon after dice roll:" + player.getPosition());
         }
-        System.out.println("Congratulations! Player reached 100");
+        System.out.println("Congratulations! Player reached Exact Winning 100");
     }
 }
