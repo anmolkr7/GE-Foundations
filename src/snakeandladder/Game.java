@@ -17,27 +17,34 @@ public class Game {
         System.out.println("Welcome to Snake and Ladder Game");
         System.out.println("Player starting position:"+player.getPosition());
 
-        int diceValue=dice.roll();
-        System.out.println("Dice Rolled:"+diceValue);
+        //Loop until position=100
+        while(player.getPosition()<100) {
+            //Roll the dice
+            int diceValue = dice.roll();
+            System.out.println("Dice Rolled:" + diceValue);
 
-        //Generates 0,1,2 corresponding to No Play, Ladder, Snake
-        int option=(int)(Math.floor(Math.random()*10)%3);
-        int currentPosition=player.getPosition();
+            //Generates 0,1,2 corresponding to No Play, Ladder, Snake
+            int option = (int) (Math.floor(Math.random() * 10) % 3);
+            int currentPosition = player.getPosition();
 
-        if(option==0){
-            System.out.println("No Play"); //position remains same
-        }
-        else if(option==1){
-            System.out.println("Ladder");
-            currentPosition+=diceValue; //move forward
-        }
-        else{
-            System.out.println("Snake");
-            currentPosition-=diceValue; //move backwards
-        }
+            if (option == 0) {
+                System.out.println("No Play"); //position remains same
+            } else if (option == 1) {
+                System.out.println("Ladder");
+                currentPosition += diceValue; //move forward
+            } else {
+                System.out.println("Snake");
+                currentPosition -= diceValue; //move backwards
+            }
 
-        //Updating player position
-        player.setPosition(currentPosition);
-        System.out.println("Player Positon after dice roll:"+player.getPosition());
+            if(currentPosition<0){
+                System.out.println("Position < 0, so reset to 0");
+                currentPosition=0;
+            }
+            //Updating player position
+            player.setPosition(currentPosition);
+            System.out.println("Player Positon after dice roll:" + player.getPosition());
+        }
+        System.out.println("Congratulations! Player reached 100");
     }
 }
