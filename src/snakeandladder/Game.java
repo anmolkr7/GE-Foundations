@@ -19,5 +19,25 @@ public class Game {
 
         int diceValue=dice.roll();
         System.out.println("Dice Rolled:"+diceValue);
+
+        //Generates 0,1,2 corresponding to No Play, Ladder, Snake
+        int option=(int)(Math.floor(Math.random()*10)%3);
+        int currentPosition=player.getPosition();
+
+        if(option==0){
+            System.out.println("No Play"); //position remains same
+        }
+        else if(option==1){
+            System.out.println("Ladder");
+            currentPosition+=diceValue; //move forward
+        }
+        else{
+            System.out.println("Snake");
+            currentPosition-=diceValue; //move backwards
+        }
+
+        //Updating player position
+        player.setPosition(currentPosition);
+        System.out.println("Player Positon after dice roll:"+player.getPosition());
     }
 }
